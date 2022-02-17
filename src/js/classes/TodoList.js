@@ -17,7 +17,7 @@ export class TodoList {
     }
 
     deleteTodo( id ) {
-        // TODO: Implement Logic to delete todo
+        this.todos = this.todos.filter( todo => todo.id != id );
     }
 
     deleteCompleted() {

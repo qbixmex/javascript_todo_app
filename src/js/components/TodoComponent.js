@@ -1,6 +1,9 @@
-import { todoList } from "../..";
-import { Todo } from "../classes";
+import { Todo, TodoList } from "../classes";
 
+// Todo List
+const todoList = new TodoList();
+
+// Elements
 const divTodoList = document.querySelector(".todo-list");
 const txtInput = document.querySelector(".new-todo");
 
@@ -28,13 +31,12 @@ export const createHtmlTodo = ( todo ) => {
 /* ------------------- EVENTS ------------------ */
 /* ============================================= */
 
-txtInput,addEventListener("keyup", ( event ) => {    
+txtInput.addEventListener("keyup", ( event ) => {    
     if ( event.keyCode === 13 && txtInput.value.length > 0 ) {
         const newTodo = new Todo( txtInput.value );
         todoList.newTodo( newTodo );
         createHtmlTodo( newTodo );
         txtInput.value = "";
-        console.log( todoList );
     }
 });
 
@@ -46,5 +48,8 @@ divTodoList.addEventListener("click", ( event ) => {
     if ( elementName.includes("input") ) {
         todoList.setCompleted( todoId );
         todoElement.classList.toggle("completed");
+    } else if ( elementName.includes("button") ) {
+        todoList.deleteTodo( todoId );
+        divTodoList.removeChild( todoElement );
     }
 });
