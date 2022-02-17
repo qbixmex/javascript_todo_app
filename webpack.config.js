@@ -58,10 +58,9 @@ module.exports = {
         }),
     ],
     devServer: {
-        port: 3000,
         open: true,
-        liveReload: false,
         hot: true,
+        watchFiles: ['src/index.html'],
         client: {
             logging: 'none',
         },
