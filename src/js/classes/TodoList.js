@@ -20,7 +20,7 @@ export class TodoList {
         this.todos = this.todos.filter( todo => todo.id != id );
     }
 
-    deleteCompleted() {
-        // TODO: Implement Logic to delete completed todos
+    clearCompleted() {
+        this.todos = this.todos.filter( todo => !todo.completed );
     }
 }

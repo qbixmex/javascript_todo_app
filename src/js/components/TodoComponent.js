@@ -5,7 +5,8 @@ const todoList = new TodoList();
 
 // Elements
 const divTodoList = document.querySelector(".todo-list");
-const txtInput = document.querySelector(".new-todo");
+const txtInput    = document.querySelector(".new-todo");
+const clearBtn    = document.querySelector(".clear-completed");
 
 export const createHtmlTodo = ( todo ) => {
     const htmlTodo = `
@@ -51,5 +52,16 @@ divTodoList.addEventListener("click", ( event ) => {
     } else if ( elementName.includes("button") ) {
         todoList.deleteTodo( todoId );
         divTodoList.removeChild( todoElement );
+    }
+});
+
+clearBtn.addEventListener("click", () => {
+    ( todoList.todos.length > 0 ) && todoList.clearCompleted();
+
+    for ( let i = divTodoList.children.length - 1; i >= 0; i-- ) {
+        const element = divTodoList.children[i];
+        if ( element.classList.contains("completed") ) {
+            divTodoList.removeChild( element );
+        }
     }
 });
