@@ -4,7 +4,7 @@ export class TodoList {
     }
 
     newTodo( todo ) {
-        this.todos.push( todo );
+        this.todos.unshift( todo );
     }
 
     setCompleted( id ) {

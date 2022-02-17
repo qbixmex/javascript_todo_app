@@ -61,6 +61,7 @@ module.exports = {
         watchFiles: ['src/index.html'],
         client: {
             logging: 'none',
+            reconnect: true,
         },
     },
 };
