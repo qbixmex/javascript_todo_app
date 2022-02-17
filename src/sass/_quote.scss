@@ -1,0 +1,41 @@
+.quote {
+	border: none;
+	margin: 20px 0 60px 0;
+}
+
+.quote p {
+	font-style: italic;
+}
+
+.quote p:before {
+	content: '“';
+	font-size: 50px;
+	opacity: .15;
+	position: absolute;
+	top: -20px;
+	left: 3px;
+}
+
+.quote p:after {
+	content: '”';
+	font-size: 50px;
+	opacity: .15;
+	position: absolute;
+	bottom: -42px;
+	right: 3px;
+}
+
+.quote footer {
+	position: absolute;
+	bottom: -40px;
+	right: 0;
+}
+
+.quote footer img {
+	border-radius: 3px;
+}
+
+.quote footer a {
+	margin-left: 5px;
+	vertical-align: middle;
+}

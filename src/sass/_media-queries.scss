@@ -1,0 +1,39 @@
+/*
+	Hack to remove background from Mobile Safari.
+	Can't use it globally since it destroys checkboxes in Firefox
+*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.toggle-all,
+	.todo-list li .toggle {
+		background: none;
+	}
+
+	.todo-list li .toggle {
+		height: 40px;
+	}
+}
+
+@media (max-width: 576px) {
+	.todoapp {
+		width: 95%;
+		margin: 130px auto 40px auto;
+	}
+	.footer {
+		height: 50px;
+	}
+
+	.filters {
+		bottom: 10px;
+	}
+}
+
+@media (min-width: 768px) {
+	.learn-bar {
+		width: auto;
+		padding-left: 300px;
+	}
+
+	.learn-bar > .learn {
+		left: 8px;
+	}
+}
