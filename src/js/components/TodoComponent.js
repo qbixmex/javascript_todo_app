@@ -1,5 +1,5 @@
-import { Todo } from "../classes";
 import { todoList } from "../..";
+import { Todo } from "../classes";
 
 const divTodoList = document.querySelector(".todo-list");
 const txtInput = document.querySelector(".new-todo");
@@ -35,5 +35,16 @@ txtInput,addEventListener("keyup", ( event ) => {
         createHtmlTodo( newTodo );
         txtInput.value = "";
         console.log( todoList );
+    }
+});
+
+divTodoList.addEventListener("click", ( event ) => {
+    const elementName = event.target.localName; // input, label, button
+    const todoElement = event.target.parentElement.parentElement;
+    const todoId = todoElement.getAttribute("data-id");
+
+    if ( elementName.includes("input") ) {
+        todoList.setCompleted( todoId );
+        todoElement.classList.toggle("completed");
     }
 });
