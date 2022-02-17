@@ -60,7 +60,7 @@ module.exports = {
     devServer: {
         port: 3000,
         open: true,
-        liveReload: true,
+        liveReload: false,
         hot: true,
         client: {
             logging: 'none',
