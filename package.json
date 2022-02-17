@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.config.js",
-    "serve": "webpack serve --config webpack.config.js --port 3000"
+    "serve": "webpack serve --config webpack.config.js --hot --port 3000 --open"
   },
   "keywords": [],
   "author": "Daniel González",

@@ -7,7 +7,7 @@ module.exports = {
     mode: "development",
     entry: "./src/index.js",
     output: {
-        clean: true,
+        // clean: true,
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js"
     },
@@ -58,8 +58,6 @@ module.exports = {
         }),
     ],
     devServer: {
-        open: true,
-        hot: true,
         watchFiles: ['src/index.html'],
         client: {
             logging: 'none',
