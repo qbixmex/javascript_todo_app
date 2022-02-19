@@ -1,7 +1,5 @@
-import { Todo, TodoList } from "../classes";
-
-// Todo List
-const todoList = new TodoList();
+import { todoList } from "../..";
+import { Todo } from "../classes";
 
 // Elements
 const divTodoList = document.querySelector(".todo-list");
