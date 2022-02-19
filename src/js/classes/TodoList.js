@@ -20,6 +20,10 @@ export class TodoList {
         }
     }
 
+    getPending() {
+        return this.todos.filter( todo => !todo.completed ).length;
+    }
+
     deleteTodo( id ) {
         this.todos = this.todos.filter( todo => todo.id != id );
         this.saveLocalStorage();

@@ -1,10 +1,12 @@
-import { todoList } from "../..";
+import { pending, todoList } from "../..";
 import { Todo } from "../classes";
 
 // Elements
-const divTodoList = document.querySelector(".todo-list");
-const txtInput    = document.querySelector(".new-todo");
-const clearBtn    = document.querySelector(".clear-completed");
+const divTodoList   = document.querySelector(".todo-list");
+const txtInput      = document.querySelector(".new-todo");
+const clearBtn      = document.querySelector(".clear-completed");
+const filters       = document.querySelector(".filters");
+const anchorFilters = document.querySelectorAll(".filter");
 
 export const createHtmlTodo = ( todo ) => {
     const htmlTodo = `
@@ -36,6 +38,7 @@ txtInput.addEventListener("keyup", ( event ) => {
         todoList.newTodo( newTodo );
         createHtmlTodo( newTodo );
         txtInput.value = "";
+        pending.innerText = todoList.getPending();
     }
 });
 
@@ -47,9 +50,11 @@ divTodoList.addEventListener("click", ( event ) => {
     if ( elementName.includes("input") ) {
         todoList.setCompleted( todoId );
         todoElement.classList.toggle("completed");
+        pending.innerText = todoList.getPending();
     } else if ( elementName.includes("button") ) {
         todoList.deleteTodo( todoId );
         divTodoList.removeChild( todoElement );
+        pending.innerText = todoList.getPending();
     }
 });
 
@@ -60,6 +65,36 @@ clearBtn.addEventListener("click", () => {
         const element = divTodoList.children[i];
         if ( element.classList.contains("completed") ) {
             divTodoList.removeChild( element );
+        }
+    }
+});
+
+filters.addEventListener("click", ( event ) => {
+    const filter = event.target.text;
+
+    anchorFilters.forEach( element => {
+        element.classList.remove('selected');
+    });
+
+    event.target.classList.add("selected");
+
+    if( !filter ) { return; }
+
+    for ( const element of divTodoList.children ) {
+        element.classList.remove("hidden");
+        const completed = element.classList.contains("completed");
+
+        switch (filter) {
+            case "Pending":
+                if( completed ) {
+                    element.classList.add("hidden");
+                }
+                break;
+            case "Completed":
+                if( !completed ) {
+                    element.classList.add("hidden");
+                }
+                break;
         }
     }
 });
